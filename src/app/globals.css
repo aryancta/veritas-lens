@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 33% 99%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 230 70% 56%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 230 70% 96%;
+    --accent-foreground: 230 70% 30%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 142 71% 38%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 32 95% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 230 70% 56%;
+
+    --radius: 0.65rem;
+  }
+
+  .dark {
+    --background: 222 47% 5%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 7%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 7%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 230 70% 65%;
+    --primary-foreground: 222 47% 5%;
+
+    --secondary: 217 33% 12%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 12%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 230 70% 18%;
+    --accent-foreground: 230 70% 88%;
+
+    --destructive: 0 63% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 5%;
+
+    --warning: 32 95% 58%;
+    --warning-foreground: 0 0% 5%;
+
+    --border: 217 33% 15%;
+    --input: 217 33% 15%;
+    --ring: 230 70% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply scroll-smooth antialiased;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.gradient-mesh {
+  background-image:
+    radial-gradient(at 27% 37%, hsla(230, 96%, 65%, 0.18) 0px, transparent 50%),
+    radial-gradient(at 97% 21%, hsla(280, 76%, 60%, 0.12) 0px, transparent 50%),
+    radial-gradient(at 52% 99%, hsla(190, 95%, 60%, 0.12) 0px, transparent 50%),
+    radial-gradient(at 10% 90%, hsla(330, 80%, 65%, 0.10) 0px, transparent 50%);
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 25%,
+    hsl(var(--secondary)) 50%,
+    hsl(var(--muted)) 75%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+}
+
+mark.suspicion {
+  border-radius: 4px;
+  padding: 0 3px;
+  background-color: rgba(239, 68, 68, 0.18);
+  color: inherit;
+  border-bottom: 2px solid rgba(239, 68, 68, 0.55);
+}
+
+mark.support {
+  border-radius: 4px;
+  padding: 0 3px;
+  background-color: rgba(34, 197, 94, 0.18);
+  color: inherit;
+  border-bottom: 2px solid rgba(34, 197, 94, 0.55);
+}

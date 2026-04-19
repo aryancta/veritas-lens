@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" role="img" aria-label="Veritas Lens architecture">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#eef2ff"/>
+    </linearGradient>
+    <linearGradient id="g-deberta" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#5b6cff"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+    <linearGradient id="g-llm" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+    <linearGradient id="g-audit" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+    <style>
+      .t { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; font-weight: 600; fill: #0f172a; }
+      .s { font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; font-size: 11px; fill: #475569; }
+      .tw { fill: #ffffff; }
+      .sw { fill: rgba(255,255,255,0.92); font-size: 11px; }
+      .lbl { font-family: system-ui, -apple-system; font-size: 12px; fill: #475569; }
+    </style>
+  </defs>
+
+  <rect width="960" height="380" fill="url(#bg)"/>
+
+  <text x="32" y="42" class="t" font-size="20">Veritas Lens · System overview</text>
+  <text x="32" y="62" class="s">DeBERTa-v3 ensemble + L-Defense rationale + adversarial paraphrase audit</text>
+
+  <!-- input -->
+  <rect x="40" y="160" width="160" height="68" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="120" y="190" class="t" font-size="13" text-anchor="middle">User input</text>
+  <text x="120" y="208" class="s" text-anchor="middle">Headline + body</text>
+
+  <!-- deberta -->
+  <rect x="240" y="100" width="190" height="68" rx="12" fill="url(#g-deberta)"/>
+  <text x="335" y="130" class="tw" font-size="13" text-anchor="middle">DeBERTa-v3 ensemble</text>
+  <text x="335" y="148" class="sw" text-anchor="middle">5-fold · isotonic-calibrated</text>
+
+  <!-- saliency -->
+  <rect x="240" y="220" width="190" height="68" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="335" y="250" class="t" font-size="13" text-anchor="middle">Saliency aggregator</text>
+  <text x="335" y="268" class="s" text-anchor="middle">SHAP · top-K phrases</text>
+
+  <!-- l-defense -->
+  <rect x="470" y="60" width="190" height="68" rx="12" fill="url(#g-llm)"/>
+  <text x="565" y="90" class="tw" font-size="13" text-anchor="middle">L-Defense LLM</text>
+  <text x="565" y="108" class="sw" text-anchor="middle">Argues REAL vs FAKE</text>
+
+  <!-- audit -->
+  <rect x="470" y="180" width="190" height="68" rx="12" fill="url(#g-audit)"/>
+  <text x="565" y="210" class="tw" font-size="13" text-anchor="middle">Paraphrase auditor</text>
+  <text x="565" y="228" class="sw" text-anchor="middle">LLM rewrite + reclassify</text>
+
+  <!-- robust badge -->
+  <rect x="470" y="280" width="190" height="56" rx="12" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="565" y="306" class="t" font-size="13" text-anchor="middle">Robustness verdict</text>
+  <text x="565" y="324" class="s" text-anchor="middle">STABLE · DRIFTED · FLIPPED</text>
+
+  <!-- ui -->
+  <rect x="700" y="60" width="220" height="276" rx="14" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="810" y="92" class="t" font-size="14" text-anchor="middle">Veritas Lens UI</text>
+  <text x="810" y="110" class="s" text-anchor="middle">Verdict · highlights · debate · audit</text>
+
+  <rect x="720" y="130" width="180" height="34" rx="8" fill="#dcfce7" stroke="#86efac"/>
+  <text x="810" y="152" class="lbl" text-anchor="middle">REAL · 97.9%</text>
+
+  <rect x="720" y="174" width="180" height="34" rx="8" fill="#fee2e2" stroke="#fca5a5"/>
+  <text x="810" y="196" class="lbl" text-anchor="middle">FAKE · 99.1%</text>
+
+  <rect x="720" y="218" width="180" height="34" rx="8" fill="#fef3c7" stroke="#fcd34d"/>
+  <text x="810" y="240" class="lbl" text-anchor="middle">Robustness: FLIPPED</text>
+
+  <rect x="720" y="262" width="180" height="58" rx="8" fill="#eef2ff" stroke="#c7d2fe"/>
+  <text x="810" y="282" class="lbl" text-anchor="middle">L-Defense rationale</text>
+  <text x="810" y="300" class="s" text-anchor="middle">3 bullets · Real vs Fake</text>
+  <text x="810" y="314" class="s" text-anchor="middle">side-by-side</text>
+
+  <!-- edges -->
+  <line x1="200" y1="194" x2="240" y2="134" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="200" y1="194" x2="240" y2="254" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="430" y1="134" x2="470" y2="94" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="430" y1="254" x2="470" y2="214" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="430" y1="134" x2="470" y2="214" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="660" y1="94" x2="700" y2="120" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="660" y1="214" x2="700" y2="195" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="660" y1="308" x2="700" y2="240" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+</svg>
