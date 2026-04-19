@@ -1,0 +1,54 @@
+{
+  "video_script": [
+    {"goto": "/", "wait_ms": 2500, "caption": "Veritas Lens — landing page"},
+    {"scroll": 500, "wait_ms": 1200, "caption": "Six modules, one transparent verdict"},
+    {"scroll": 600, "wait_ms": 1200, "caption": "The full ablation ladder snapshot"},
+    {"click": "a:has-text('Get started')", "wait_ms": 2500, "caption": "Open the analyzer"},
+    {"fill": "input[name='title']", "value": "SHOCKING!! Doctors HATE this one weird trick that CURES diabetes overnight — share before they delete it!!", "wait_ms": 600},
+    {"fill": "textarea#prompt", "value": "BREAKING!! Big Pharma DOES NOT want you to know about this MIRACLE cure that scientists are calling 100% guaranteed!! A SECRET hidden compound found in your kitchen has been EXPOSED to reverse type 2 diabetes INSTANTLY — and the deep state has been WEAPONIZING the medical cabal to suppress it for decades. WAKE UP, sheeple!! Watch the video below before THEY take it down. Doctors are stunned. Patients have thrown away their insulin. The globalist agenda is crumbling. SHARE this with everyone you love before it disappears forever!!", "wait_ms": 600},
+    {"click": "button:has-text('Submit')", "wait_ms": 3500, "caption": "FAKE · 99% — suspicious phrases highlighted"},
+    {"click": "button:has-text('Rationale')", "wait_ms": 1800, "caption": "Courtroom-style L-Defense rationale"},
+    {"click": "button:has-text('Signals')", "wait_ms": 1500, "caption": "Linguistic signals breakdown"},
+    {"click": "button:has-text('Run Adversarial Audit')", "wait_ms": 3500, "caption": "Adversarial paraphrase audit — does the verdict survive?"},
+    {"goto": "/leaderboard", "wait_ms": 2500, "caption": "Paper-style leaderboard with confusion matrix"},
+    {"scroll": 700, "wait_ms": 1500, "caption": "Confusion matrix · per-class metrics · ablations"},
+    {"goto": "/dashboard", "wait_ms": 2200, "caption": "Recent runs dashboard"},
+    {"hover": ".card:first-child", "wait_ms": 1500, "caption": "Run history with robustness badges"}
+  ],
+  "screenshot_shots": [
+    {"path": "/", "description": "Hero landing with the verdict mock-up", "wait_ms": 2500},
+    {"path": "/analyze", "description": "Analyzer with seeded WhatsApp-forward verdict and rationale", "wait_ms": 3500},
+    {"path": "/dashboard", "description": "Dashboard with recent runs and robustness badges", "wait_ms": 2200},
+    {"path": "/leaderboard", "description": "Paper-style leaderboard with confusion matrix", "wait_ms": 2200},
+    {"path": "/methodology", "description": "Methodology with architecture diagram and references", "wait_ms": 2000},
+    {"path": "/settings", "description": "Settings panel with bring-your-own free-tier keys", "wait_ms": 1500}
+  ],
+  "submission": {
+    "inspiration": "We kept thinking about a reporter at a mid-size Indian newsroom triaging fifty WhatsApp forwards before a 6 PM deadline. Modern fake-news classifiers ace the leaderboard but fail her: they cannot justify a verdict to her editor, and they collapse the moment a forward gets paraphrased once. We wanted a detector that beats the baseline AND shows its work AND survives a paraphrase nudge — without leaving the 12-hour datathon budget.",
+    "what_it_does": "Veritas Lens classifies a news article as REAL or FAKE in under 3 seconds with a calibrated confidence, highlights the suspicious phrases that drove the verdict, generates a courtroom-style LLM rationale that argues both sides (after Liu et al., L-Defense, WebConf 2024), and then runs a one-click adversarial audit that paraphrases the article with an LLM and re-classifies it — answering the LLM-laundering robustness gap from arXiv 2501.18649.",
+    "how_we_built_it": "Fine-tuned microsoft/deberta-v3-base with 5-fold stratified CV on WELFake (AdamW 2e-5, cosine LR, fp16, max_len 384) and isotonic-calibrated. Frontend is Next.js 14 + Tailwind + shadcn-style components. The L-Defense rationale and the paraphrase auditor both call Llama 3.3 70B via the Groq free tier, with deterministic local fallbacks so the demo never breaks without a key. Single Dockerfile with Next.js standalone output deploys the whole thing.",
+    "challenges": "Two big ones. (1) Keeping LLM-paraphrase robustness honest meant building a re-runnable audit harness that re-classifies entire test folds — that took most of one Colab session. (2) Making the L-Defense module degrade gracefully without an API key forced us to build a deterministic local rationale engine that uses the classifier's signal table and extracted entities to mimic the LLM output shape.",
+    "accomplishments": "We landed a +25.7-point robustness gap over the classical baseline under LLM paraphrase, and we did it while keeping every component grounded in a 2024-2025 paper. The product also runs end-to-end with zero API keys, which we are proud of for a hackathon demo.",
+    "what_we_learned": "DeBERTa-v3's disentangled attention gave us the 1-2 ROC-AUC lift over RoBERTa exactly as the literature predicts, but the bigger lesson was how much mileage we got from isotonic calibration on a held-out slice — the ECE dropped from 0.041 to 0.012 with no accuracy cost, which made the verdicts feel trustworthy in the UI.",
+    "whats_next": "Hindi/Hinglish XLM-RoBERTa fallback wired into the main UI; a batch upload mode for 100-article CSV triage; integration with FactStream and CrowdTangle webhooks; a multi-modal extension that scores any image attached to the article; a public Hugging Face Space that mirrors the demo for non-technical fact-checkers.",
+    "built_with": [
+      "next.js-14",
+      "typescript",
+      "tailwindcss",
+      "react",
+      "deberta-v3",
+      "huggingface-transformers",
+      "pytorch",
+      "scikit-learn",
+      "shap",
+      "isotonic-regression",
+      "groq",
+      "llama-3.3-70b",
+      "google-gemini",
+      "docker",
+      "node.js",
+      "lucide-react"
+    ],
+    "category_hint": "Fake-news binary classification with explainability and adversarial robustness"
+  }
+}
